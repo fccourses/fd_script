@@ -1,12 +1,11 @@
-let box; //Объявление переменной
+let value = "test";
 
-box = 10; //Инициализация переменной
+console.log("value = ", typeof value, value);
 
-console.log("Я джава скрипт девеопер!");
+value = false;
 
-console.log( box ); // Логгирование переменной
+console.log("value = ", typeof value, value);
 
-console.log(undefined);
-console.log(null);
-console.log(true);
-console.log(false);
+value = 10;
+
+console.log("value = ", typeof value, value);
