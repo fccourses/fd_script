@@ -1,17 +1,11 @@
-let variable = "1 test 2 test";
+console.log(1);
 
-console.log(variable);
+const result = true;
 
-variable = 10;
+if (result) {
 
-console.log(variable);
+  console.log("ok");
+  
+}
 
-//   ==================== //
-
-const constant = "test";
-
-console.log(constant);
-
-constant = 10
-
-console.log(constant);
+console.log(2);
