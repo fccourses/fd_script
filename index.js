@@ -1,9 +1,12 @@
-/* const userInput1 = +prompt("Введите число 1:");
-const userInput2 = +prompt("Введите число 2:");
- */
-const getSumOfTwo = function () {//function expression
 
-  const result = userInput1 + userInput2;
+const getSumOfTwo = function (value1, value2) {
+  //function expression
+
+  const num1 = +value1;
+  const num2 = +value2;
+
+  const result = num1 + num2;
+
 
   if (!isNaN(result)) {
     return result;
@@ -11,11 +14,9 @@ const getSumOfTwo = function () {//function expression
   return false;
 };
 
+console.log(num1); // error
 
-const washMachine = function( mode, temperature, rpm, powder, values ){
-  //do some stuff
-  //return clean values
-}
+const result = getSumOfTwo(12, 22);
+console.log(result);
 
 
-const boxWithCleanClothers = washMachine('soft', 35, 800, 'Percil', 'dirty clothers');
