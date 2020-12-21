@@ -1,16 +1,21 @@
 /* const userInput1 = +prompt("Введите число 1:");
 const userInput2 = +prompt("Введите число 2:");
+ */
+const getSumOfTwo = function () {//function expression
 
-const result = userInput1 + userInput2;
+  const result = userInput1 + userInput2;
 
-if (isNaN(result)) {
-  alert("Вы ввели не числа");
-} else {
-  alert(result);
-} */
-
-const myFirstFunc = function () {
-  console.log("1");
+  if (!isNaN(result)) {
+    return result;
+  }
+  return false;
 };
 
-myFirstFunc();
+
+const washMachine = function( mode, temperature, rpm, powder, values ){
+  //do some stuff
+  //return clean values
+}
+
+
+const boxWithCleanClothers = washMachine('soft', 35, 800, 'Percil', 'dirty clothers');
