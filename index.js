@@ -16,25 +16,29 @@ const calculate = function (a, b, sign) {
   if (isNaN(check)) {
     return null;
   }
-
+  let f;
   switch (sign) {
     case '/': {
-      const result = division(a, b);
-      return result;
+      f = division;
+      break;
     }
     case '*': {
-      return mul(a, b);
+      f = mul;
+      break;
     }
     case '-': {
-      return subtraction(a, b);
+      f = subtraction;
+      break;
     }
     case '+': {
-      return sum(a, b);
+      f = sum;
+      break;
     }
     default: {
       return null;
     }
   }
+  return f(a, b);
 };
 
 const userInput1 = +prompt('введите 1 число');
