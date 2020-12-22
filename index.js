@@ -10,13 +10,19 @@ const mul = function (a, b) {
 const division = function (a, b) {
   return a / b;
 };
-
+/**
+ * 
+ * @param {number} a 
+ * @param {number} b 
+ * @param {string} sign 
+ * @returns {null | number}
+ */
 const calculate = function (a, b, sign) {
   const check = a - b;
   if (isNaN(check)) {
     return null;
   }
-  let f;
+  let f = 1;
   switch (sign) {
     case '/': {
       f = division;
@@ -34,11 +40,11 @@ const calculate = function (a, b, sign) {
       f = sum;
       break;
     }
-    default: {
-      return null;
-    }
   }
-  return f(a, b);
+  if (typeof f === 'function') {
+    return f(a, b);
+  }
+  return null;
 };
 
 const userInput1 = +prompt('введите 1 число');
