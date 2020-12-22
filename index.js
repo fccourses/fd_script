@@ -1,14 +1,17 @@
 const globalVar = 'global';
 
 if (globalVar) {
-  const ifVar = 'ifVar1';
+  const ifVar1 = 'ifVar1';
 
-  console.log(ifVar);
+  console.log(ifVar1);
   console.log(globalVar);
 
   if (globalVar) {
-    const ifVar = 'ifVar2';
-    console.log(ifVar);
+    const ifVar2 = 'ifVar2';
+    console.log(ifVar2);
+    
+    console.log(ifVar1);
+
     console.log(globalVar);
   }
 
