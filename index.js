@@ -1,23 +1,15 @@
-const globalVar = 'global';
+const userInput = +prompt('Введи число:');
 
-if (globalVar) {
-  const ifVar1 = 'ifVar1';
+if (isNaN(userInput)) {
+  console.log('Вы ввели не число');
+} else if (userInput % 5 === 0) {
+  console.log('Делится на 5 без остатка');
+} else if (userInput % 3 === 0) {
+  console.log('Делится на 3 без остатка');
+} else if (userInput % 2 === 0) {
+  console.log('Делится на 2 без остатка');
+} else {
+  console.log('Не делится ни на 5, ни на 3, ни на 2');
+}
 
-  console.log(ifVar1);
-  console.log(globalVar);
-
-  if (globalVar) {
-    const ifVar2 = 'ifVar2';
-    console.log(ifVar2);
-    
-    console.log(ifVar1);
-
-    console.log(globalVar);
-  }
-
-
-} 
-
-
-// console.log(ifVar);
-console.log(globalVar);
+console.log('end of script');
