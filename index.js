@@ -1,18 +1,18 @@
 'use strict';
 
-const result = sum(5, 3);
-
-console.log(result);
-
 function sum(a, b) {
   return a + b;
 }
 
-function mul(a, b) { //чистая функция
-  return a * b;
+function subtract(a, b) {
+  return a - b;
 }
 
-function square(n) { // тоже чистая функция. 
-  const res = mul(n, n);
-  return res;
+function highOrderFunc(num1, num2, funcToPerformOperation) {
+  const result = funcToPerformOperation(num1, num2);
+  return result;
 }
+
+const res1 = highOrderFunc(10, 20, subtract);
+
+console.log(res1);
