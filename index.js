@@ -2,10 +2,16 @@
 
 let count = 0;
 
-while (count++ < 0) {
-  console.log(count);
-}
+while (true) {
+  count++;
 
-do {
-  console.log('1');
-} while (count++ < 0);
+  if (count % 2 === 1) {
+    continue;
+  }
+
+  console.log(count);
+
+  if (count > 10) {
+    break;
+  }
+}
