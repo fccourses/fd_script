@@ -77,7 +77,7 @@ const newCat5 = new Cat('Bernard', 'red', 5, true, 'Persian');
 */
 
 /* 2. 
-Country()
+Country(name, area, population)
   - Название
   - Площадь
   - Население
@@ -88,9 +88,39 @@ function Country(name, area, population) {
   this.name = name;
   this.area = area;
   this.population = population;
-  this.density = function () {
+  this.getDensity = function () {
     return this.population / this.area;
   };
 }
 
 const ukr = new Country('Ukraine', 576_604, 41_723_998);
+
+/* 3.
+Auto(name, speed)
+.accelerate(60)
+.deaccelerate()
+.stop()
+*/
+
+function Auto(name, maxSpeed) {
+  this.name = name;
+  this.speed = 0;
+  this.maxSpeed = maxSpeed;
+
+  this.accelerate = function (value) {
+    this.speed += value;
+    if (this.speed > this.maxSpeed) {
+      this.speed = this.maxSpeed;
+    }
+    return this.speed;
+  };
+
+  this.stop = function () {
+    this.speed = 0;
+    return this.speed;
+  };
+}
+
+const auto = new Auto('Bmw', 300);
+
+
