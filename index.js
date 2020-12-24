@@ -61,6 +61,9 @@ function Cat(name, color, age, isMale, breed) {
   this.age = age;
   this.isMale = isMale;
   this.breed = breed;
+  this.sleep = function () {
+    return 'I am sleeping';
+  };
 }
 
 const newCat1 = new Cat('Murzik', 'red', 5, true, 'Persian');
@@ -68,3 +71,26 @@ const newCat2 = new Cat('Test', 'white', 3, false, 'Spinx');
 const newCat3 = new Cat('Testovich', 'brown', 2, true, 'Siamese');
 const newCat4 = new Cat('Keks', 'red', 1, false, null);
 const newCat5 = new Cat('Bernard', 'red', 5, true, 'Persian');
+
+/* 1.
+ new User(name, surname, age) 
+*/
+
+/* 2. 
+Country()
+  - Название
+  - Площадь
+  - Население
+  - Плотность населения
+*/
+
+function Country(name, area, population) {
+  this.name = name;
+  this.area = area;
+  this.population = population;
+  this.density = function () {
+    return this.population / this.area;
+  };
+}
+
+const ukr = new Country('Ukraine', 576_604, 41_723_998);
