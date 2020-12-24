@@ -55,15 +55,16 @@ const cat3 = {
   },
 };
 
-/**
- *
- * @param {*} name
- * @param {*} color
- * @param {*} age
- * @param {*} isMale
- * @param {*} breed
- * @constructor  - Функция, которая создаёт объекты.
- */
 function Cat(name, color, age, isMale, breed) {
-  
+  this.name = name;
+  this.furColor = color;
+  this.age = age;
+  this.isMale = isMale;
+  this.breed = breed;
 }
+
+const newCat1 = new Cat('Murzik', 'red', 5, true, 'Persian');
+const newCat2 = new Cat('Test', 'white', 3, false, 'Spinx');
+const newCat3 = new Cat('Testovich', 'brown', 2, true, 'Siamese');
+const newCat4 = new Cat('Keks', 'red', 1, false, null);
+const newCat5 = new Cat('Bernard', 'red', 5, true, 'Persian');
