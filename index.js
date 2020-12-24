@@ -1,21 +1,69 @@
 'use strict';
 
 //Создали объект кота
-const cat = {
+const cat1 = {
   color: 'black',
   breed: 'Spinx',
   age: 8,
-  isMale: true,
+  isMale: false,
   name: 'Kasya',
+  meow: function () {
+    // метод
+    return 'MEOW!!!';
+  },
+  run: function () {
+    return 'I AM RUNNING!';
+  },
+  jump: function () {
+    return 'Jump!';
+  },
 };
 
-console.log(cat);
-cat.age = cat.age + 1; // изменили существующее свойство на основе старого значения
-console.log(cat);
-cat.name = 'Test Testovich'; // изменили существующее свойство
-console.log(cat);
-cat.amountOfLegs = 4; // создали новое свойство
-console.log(cat);
+const cat2 = {
+  color: 'black',
+  breed: 'Siamease',
+  age: 6,
+  isMale: true,
+  name: 'Test',
+  meow: function () {
+    // метод
+    return 'MEOW!!!';
+  },
+  run: function () {
+    return 'I AM RUNNING!';
+  },
+  jump: function () {
+    return 'Jump!';
+  },
+};
 
-delete cat.amountOfLegs // delete property
-console.log(cat);
+const cat3 = {
+  color: 'black',
+  breed: 'Spinx',
+  age: 3,
+  isMale: false,
+  name: 'Testovich',
+  meow: function () {
+    // метод
+    return 'MEOW!!!';
+  },
+  run: function () {
+    return 'I AM RUNNING!';
+  },
+  jump: function () {
+    return 'Jump!';
+  },
+};
+
+/**
+ *
+ * @param {*} name
+ * @param {*} color
+ * @param {*} age
+ * @param {*} isMale
+ * @param {*} breed
+ * @constructor  - Функция, которая создаёт объекты.
+ */
+function Cat(name, color, age, isMale, breed) {
+  
+}
