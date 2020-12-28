@@ -1,13 +1,17 @@
 'use strict';
 
-const num1 = +prompt('first number');
-const num2 = +prompt('second number');
+const user = {
+  firstName: 'test',
+  lastName: 'testovich',
+  age: 5,
+  isMale: true,
+};
 
-// alert(num1 + ' + ' + num2 + ' = ' + (num1 + num2));
-
-function getTemplateDescription() {
-  return 'Math operation is:';
+function sayHello(userObj) {
+  if (userObj.age >= 18) {
+    return `Hello, ${userObj.firstName} ${userObj.lastName} !!!`;
+  }
+  return `Goodbye, ${userObj.lastName}!`;
 }
 
-alert(`${getTemplateDescription()}
-${num1} + ${num2} = ${num1 + num2}`);
+console.log(sayHello(user));
