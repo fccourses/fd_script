@@ -1,6 +1,6 @@
 'use strict';
 
-const user = {
+const object = {
   'favorite color': 'red',
   0: 'test value',
   1: 'test value 2',
@@ -8,10 +8,25 @@ const user = {
 
 // alert(user.favorite color);
 
-console.log(user[0]);
-console.log(user['0']);
+console.log(object[0]);
+console.log(object['0']);
 
 const test = '1';
 
-console.log(user[test]);
+console.log(object[test]);
 
+const strAsKey = '2 * 2';
+
+object[strAsKey] = 2 * 2;
+
+function createMultiplicationTable() {
+  const result = {};
+
+  for (let i = 1; i < 10; i++) {
+    for (let j = 1; j < 10; j++) {
+      result[`${i} * ${j}`] = i * j;
+    }
+  }
+
+  return result;
+}
