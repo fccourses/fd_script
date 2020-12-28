@@ -1,17 +1,10 @@
 'use strict';
 
-const user = {
-  firstName: 'test',
-  lastName: 'testovich',
-  age: 5,
-  isMale: true,
-};
+const PROTOCOL = 'http://';
+const SERVER_IP = '127.0.0.1';
+const PORT = 3000;
 
-function sayHello(userObj) {
-  if (userObj.age >= 18) {
-    return `Hello, ${userObj.firstName} ${userObj.lastName} !!!`;
-  }
-  return `Goodbye, ${userObj.lastName}!`;
+function createQuery(path) {
+  const url = `${PROTOCOL}${SERVER_IP}:${PORT}${path}`
+  return url;
 }
-
-console.log(sayHello(user));
