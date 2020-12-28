@@ -123,4 +123,22 @@ function Auto(name, maxSpeed) {
 
 const auto = new Auto('Bmw', 300);
 
+//=============================
 
+const car = {
+  name: 'Dmw',
+  speed: 0,
+  color: 'black',
+  engine: {
+    type: 'ICE',
+    power: 100,
+    weight: 120,
+  },
+};
+/* Вывести все числа от 0 до 100 кратные указанному числу */
+function logMultiple(num) {
+  for (let i = 0; i <= 100; i += num) {
+    console.log(i);
+  }
+  return true;
+}
