@@ -21,7 +21,7 @@ object[strAsKey] = 2 * 2;
 
 function createMultiplicationTable() {
   const result = {};
-
+  debugger;
   for (let i = 1; i < 10; i++) {
     for (let j = 1; j < 10; j++) {
       result[`${i} * ${j}`] = i * j;
@@ -30,3 +30,12 @@ function createMultiplicationTable() {
 
   return result;
 }
+
+
+/* 
+    Написать функцию:
+    Создать объект семья
+    Ключём будет имя родстенника
+    А значением будет информация о нём
+    Объект создавать через prompt
+*/
