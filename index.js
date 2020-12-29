@@ -52,17 +52,21 @@ const nativeArray = [];
 */
 
 function Accumulator(startingValue) {
-  if (isNaN(startingValue)) {
-    return null;
-  }
-  this.value = startingValue;
-
   this.read = function read() {
     const userNumber = +prompt('Enter number');
-    if (isNaN(userNumber)) {
+    if (this.checkNumber(userNumber)) {
       return null;
     }
     this.value += userNumber;
     return this.value;
   };
+
+  this.checkNumber = function (number) {
+    return isNaN(number) || number < 0;
+  };
+
+  if (this.checkNumber(startingValue)) {
+    return null;
+  }
+  this.value = startingValue;
 }
