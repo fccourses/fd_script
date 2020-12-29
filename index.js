@@ -1,22 +1,37 @@
 'use strict';
 
-const obj1 = {
-  test: 'test',
-};
+const userTel1 = '+380996781243';
+const userTel2 = '+380996785245';
+const userTel3 = '+427895345234';
 
-const obj2 = {
-  test: 'test',
-};
+const userTelArray = [];
 
-const link1 = obj1;
+const arrExample = new Array();
 
-const t1 = 'str';
-const t2 = 'str';
-console.log(t1 === t2);
+/* Создаём прототип для MyArray(тут будет храниться логика) */
+function MyArrayProto() {
+  /* Уже создан пустой новый объект (this) */
+  this.push = function push(item) {
+    this[this.length] = item;
+    return ++this.length;
+  };
 
-console.log(link1 === obj1); //true
-console.log(link1 === obj2); //false
+  this.pop = function pop() {
+    const lastItem = this[this.length - 1];
+    delete this[--this.length];
+    return lastItem;
+  };
+}
 
-link1.test2 = 'str';
-console.log(link1);
-console.log(obj1);
+/* Создаем MyArray */
+function MyArray() {
+  this.length = 0;
+}
+
+MyArray.prototype = new MyArrayProto(); // создаём связь между объектами(Наследование)
+
+const arr = new Array();
+const arr2 = new Array();
+
+const myArr = new MyArray();
+const myArr2 = new MyArray();
