@@ -1,41 +1,22 @@
 'use strict';
 
-const object = {
-  'favorite color': 'red',
-  0: 'test value',
-  1: 'test value 2',
+const obj1 = {
+  test: 'test',
 };
 
-// alert(user.favorite color);
+const obj2 = {
+  test: 'test',
+};
 
-console.log(object[0]);
-console.log(object['0']);
+const link1 = obj1;
 
-const test = '1';
+const t1 = 'str';
+const t2 = 'str';
+console.log(t1 === t2);
 
-console.log(object[test]);
+console.log(link1 === obj1); //true
+console.log(link1 === obj2); //false
 
-const strAsKey = '2 * 2';
-
-object[strAsKey] = 2 * 2;
-
-function createMultiplicationTable() {
-  const result = {};
-  debugger;
-  for (let i = 1; i < 10; i++) {
-    for (let j = 1; j < 10; j++) {
-      result[`${i} * ${j}`] = i * j;
-    }
-  }
-
-  return result;
-}
-
-
-/* 
-    Написать функцию:
-    Создать объект семья
-    Ключём будет имя родстенника
-    А значением будет информация о нём
-    Объект создавать через prompt
-*/
+link1.test2 = 'str';
+console.log(link1);
+console.log(obj1);
