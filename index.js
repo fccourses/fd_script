@@ -1,37 +1,88 @@
 'use strict';
 
-function User(firstName, lastName, age, isMale) {
-  this.firstName = firstName;
-  this.lastName = lastName;
-  this.age = age;
-  this.isMale = isMale;
+const driver1 = {
+  name: 'Marina Testovna',
+  age: 20,
+  driverExp: 9,
+};
+
+const driver2 = {
+  name: 'Test Testovich',
+  age: 30,
+  driverExp: 5,
+};
+
+const car = {
+  go() {
+    return `Водитель ${this.name} сейчас едет`;
+  },
+};
+
+driver1.__proto__ = car; // устанавливаем prototype для обычных объектов
+driver2.__proto__ = car; // устанавливаем prototype для обычных объектов
+
+/* 
+Функцию конструктор:
+ladder  - лестница
+  
+value - ступенька на которой вы стоите
+up() - вы поднимаетесь на одну ступеньку
+down() - вы опускаетесь на одну ступеньку
+showStep() - вы смотрите на какой вы ступеньке
+
+const l1 = new Ladder();
+l1.up().up().up().down().showStep(); //задание
+
+*/
+
+function Ladder() {
+  this.value = 0;
+
+  this.up = function up() {
+    this.value++;
+    return this;
+  };
+
+  this.down = function down() {
+    this.value--;
+    return this;
+  };
+
+  this.showStep = function showStep() {
+    return this.value;
+  };
 }
 
-function UserPrototype() {
-  this.toString = function toString() {
-    return `${this.firstName} ${this.lastName}`;
-  };
+const l1 = new Ladder();
 
-  this.sayHello = function sayHello() {
-    return `User: ${this.firstName} says "Hello!"`;
-  };
-  /* 
-  Написать метод say, который принимает строку и вызвращает
-    строку. Формат возвращаемой строки:
-    `<Полное имя пользователя> says:
-    "<содержимое принятой строки>"`
-  */
-  this.say = function say(string) {
-    debugger;
-    if (string) {
-      return `${this.firstName} ${this.lastName} says:\n${string}`;
+console.log(l1.up().up().up().value);
+l1.up();
+
+/*
+Даны числа 4, -2, 5, 19, -130, 0, 10. Найдите минимальное и максимальное число.
+ */
+
+function getMinAndMaxNumbers() {
+  return [getMinValue(...arguments), getMaxValue(...arguments)];
+}
+
+function getMinValue() {
+  let min = arguments[0];
+  for (let i = 1; i < arguments.length; i++) {
+    if (arguments[i] < min) {
+      min = arguments[i];
     }
-  };
+  }
+  return min;
 }
-User.prototype = new UserPrototype();
 
-const u1 = new User('Test', 'Testovich', 18, true);
-const u2 = new User('Vlad', 'Testovich', 28, true);
+function getMaxValue() {
+  let max = arguments[0];
 
-u1.sayHello();
-u2.sayHello();
+  for (let i = 1; i < arguments.length; i++) {
+    if (arguments[i] > max) {
+      max = arguments[i];
+    }
+  }
+  return max;
+}
