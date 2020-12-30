@@ -62,26 +62,26 @@ l1.up();
 Даны числа 4, -2, 5, 19, -130, 0, 10. Найдите минимальное и максимальное число.
  */
 
-function getMinAndMaxNumbers() {
-  return [getMinValue(...arguments), getMaxValue(...arguments)];
+function getMinAndMaxNumbers(arr) {
+  return [getMinValue(arr), getMaxValue(arr)];
 }
 
-function getMinValue() {
-  let min = arguments[0];
-  for (let i = 1; i < arguments.length; i++) {
-    if (arguments[i] < min) {
-      min = arguments[i];
+function getMinValue(arr) {
+  let min = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] < min) {
+      min = arr[i];
     }
   }
   return min;
 }
 
-function getMaxValue() {
-  let max = arguments[0];
+function getMaxValue(arr) {
+  let max = arr[0];
 
-  for (let i = 1; i < arguments.length; i++) {
-    if (arguments[i] > max) {
-      max = arguments[i];
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] > max) {
+      max = arr[i];
     }
   }
   return max;
