@@ -17,7 +17,28 @@ function MyArrayProto() {
     delete this[--this.length];
     return lastItem;
   };
+
+
+
+
+
+
+
+  
+
+  this.forEach = function forEach(cb /* функция - callback */) {
+    for (let i = 0; i < this.length; i++) {
+      cb(this[i], i, this);
+    }
+  };
 }
+
+
+
+
+
+
+
 
 /* Создаем MyArray */
 function MyArray() {
@@ -29,4 +50,4 @@ function MyArray() {
 MyArray.prototype = new MyArrayProto(); // создаём связь между объектами(Наследование)
 
 // this - ссылка на объект, который вызывает метод.
-const myArr = new MyArray(1, 2, 3, 4, 5);
+const userArray = new MyArray({}, {});

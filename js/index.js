@@ -1,18 +1,15 @@
 'use strict';
 
-function sum(a, b) {
-  return a + b;
+const numbersArray = [1, 2, 3, 4, 5];
+
+function callback(currentValue) {
+  console.log((currentValue *= 2));
 }
 
-function withLog(func) {
-  return function (...args) {
-    const result = func(...args);
-    console.log(result);
-    return result;
-  };
+function addSubscribe(user) {
+  user.isSubscribed = true;
 }
 
-const sumWithLog = withLog(sum);
+numbersArray.forEach(callback);
 
-sumWithLog(2,8);
-
+userArray.forEach(addSubscribe);
