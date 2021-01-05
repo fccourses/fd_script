@@ -20,28 +20,26 @@ console.table(userArray);
 
 const numArr = [1, 2, 3, 4, 5, 6];
 
-
-
 const nativeResult = numArr.some(isEven);
 
 console.log(nativeResult);
 
 //=====SOME FOR MY ARRAY========
 
-const myNumArr = new MyArray(1,2);
+const myNumArr = new MyArray(1, 2);
 
 const myResult = myNumArr.some(isOdd);
 
 console.log(myResult);
 
-
-
-
+//every
+console.log(numArr.every(isEven)); // false
+console.log(myNumArr.every(isEven)); // false
 
 function isEven(num) {
   return num % 2 === 0;
 }
 
-function isOdd(num){
+function isOdd(num) {
   return num % 2 !== 0;
 }

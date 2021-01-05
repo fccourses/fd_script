@@ -26,13 +26,20 @@ function MyArrayProto() {
 
   this.some = function some(checkFunction) {
     for (let i = 0; i < this.length; i++) {
-      const result = checkFunction(this[i], i, this);
-      
-      if (result) {
+      if (checkFunction(this[i], i, this)) {
         return true;
       }
     }
     return false;
+  };
+
+  this.every = function every(checkFunc) {
+    for (let i = 0; i < this.length; i++) {
+      if (!checkFunc(this[i], i, this)) {
+        return false;
+      }
+    }
+    return true;
   };
 }
 
