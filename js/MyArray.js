@@ -18,27 +18,23 @@ function MyArrayProto() {
     return lastItem;
   };
 
-
-
-
-
-
-
-  
-
-  this.forEach = function forEach(cb /* функция - callback */) {
+  this.forEach = function forEach(cb) {
     for (let i = 0; i < this.length; i++) {
       cb(this[i], i, this);
     }
   };
+
+  this.some = function some(checkFunction) {
+    for (let i = 0; i < this.length; i++) {
+      const result = checkFunction(this[i], i, this);
+      
+      if (result) {
+        return true;
+      }
+    }
+    return false;
+  };
 }
-
-
-
-
-
-
-
 
 /* Создаем MyArray */
 function MyArray() {
@@ -47,6 +43,7 @@ function MyArray() {
     this.push(arguments[i]);
   }
 }
+
 MyArray.prototype = new MyArrayProto(); // создаём связь между объектами(Наследование)
 
 // this - ссылка на объект, который вызывает метод.
