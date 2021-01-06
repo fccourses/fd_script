@@ -28,6 +28,28 @@ function logNum(n) {
   return `${logNum(n - 1)} ${n}`;
 }
 
+/* Факториал числа */
+
+function factorial(n) {
+  if (n === 1) {
+    return 1; // basis
+  }
+
+  return n * factorial(n - 1); //recursion
+}
+
+/*
+  parenthsis(5);
+ '((((()))))' 
+ */
+
+function par(n) {
+  if (n === 1) {
+    return '()';
+  }
+  return `(${par(n - 1)})`;
+}
+
 /*
 Этапы рекурсии:
   1) Происходит рекурсивный вызов функций
