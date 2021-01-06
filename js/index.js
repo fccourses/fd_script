@@ -1,12 +1,22 @@
 'use strict';
 
 function countDown(startValue) {
-  debugger;
   console.log(startValue);
+
   if (startValue > 0) {
     countDown(startValue - 1); // рекурсия
   }
-  return true; // база 
+
+  return true; // база
+}
+
+function power(num, exp) {
+  debugger;
+  if (exp === 1) {
+    return num;
+  }
+
+  return num * power(num, exp - 1);
 }
 
 /*
