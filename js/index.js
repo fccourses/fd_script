@@ -1,23 +1,14 @@
 'use strict';
-
-const test = () => {
-  console.log(arguments); // arguments в стрелках нету
-};
-const test2 = function () {
+function test(a, b) {
   console.log(arguments);
-};
-console.dir(test);
-console.dir(test2);
-
-// test();
-
-function sum() {
-  let res = null;
-
-  for (let i = 0; i < arguments.length; i++) {
-    res += arguments[i];
-  }
-
-  return res;
+  console.log(a, b);
 }
-const r = sum(1, 2, 1, 123, 14, 343, 413, 413);
+
+function test2(a, b, ...args) { // ... - rest operator
+  console.log(a, b);
+  console.log(args);
+}
+/*
+Стрелочная функция суммирования 
+бесконечного кол-ва чисел 
+*/
