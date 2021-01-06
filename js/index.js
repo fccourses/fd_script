@@ -1,16 +1,23 @@
 'use strict';
 
-function logItem(value) {
-  console.log(`${this.title}: ${value}`);
-}
-
-const newsPaper = {
-  title: 'NY Times',
-  articles: ['String1', 'News1', 'Test1', 'Headiubng1'],
-
-  showArticles() {
-    this.articles.map(logItem.bind(this));
-  },
+const test = () => {
+  console.log(arguments); // arguments в стрелках нету
 };
+const test2 = function () {
+  console.log(arguments);
+};
+console.dir(test);
+console.dir(test2);
 
-newsPaper.showArticles();
+// test();
+
+function sum() {
+  let res = null;
+
+  for (let i = 0; i < arguments.length; i++) {
+    res += arguments[i];
+  }
+
+  return res;
+}
+const r = sum(1, 2, 1, 123, 14, 343, 413, 413);
