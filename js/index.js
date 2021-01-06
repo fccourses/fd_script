@@ -14,11 +14,7 @@ function test2(a, b, ...args) {
 бесконечного кол-ва чисел 
 */
 const sum = (...args) => {
-  let res = null;
-
-  args.forEach((number) => {
-    res += number;
+  return args.reduce((result, value) => {
+    return result + value;
   });
-
-  return res;
 };
