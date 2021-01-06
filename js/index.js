@@ -1,36 +1,17 @@
 'use strict';
-function test(a, b) {
-  console.log(arguments);
-  console.log(a, b);
+
+function countDown(startValue) {
+  debugger;
+  console.log(startValue);
+  if (startValue > 0) {
+    countDown(startValue - 1); // рекурсия
+  }
+  return true; // база 
 }
 
-function test2(a, b, ...args) {
-  // ... - rest operator
-  console.log(a, b);
-  console.log(args);
-}
 /*
-Стрелочная функция суммирования 
-бесконечного кол-ва чисел 
+Этапы рекурсии:
+  1) Происходит рекурсивный вызов функций
+  2) Доходим до базы
+  3) Все в call stack заканчивают свою работу
 */
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const numbers2 = [10, 12, 1435, 345, 345, 346, 8];
-/* Склеить два массива без concat */
-const res = [...numbers, ...numbers2]; //concat без concat
-
-const sum = (...args) => {
-  /*  
- VERSION 1
- let acc = null;
-
-  args.forEach((element) => {
-    acc += element;
-  }); 
-
-  return acc;*/
-
-  return args.reduce((result, value) => result + value);
-};
-
-console.log(sum(...numbers)); //spread(разбор) оператор.
-sum(...numbers2, ...numbers);
