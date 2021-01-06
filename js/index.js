@@ -1,17 +1,15 @@
 'use strict';
 
-function test() {
-  console.log(this); //undefined
-}
+const newsPaper = {
+  title: 'NY Times',
+  articles: ['String1', 'News1', 'Test1', 'Headiubng1'],
 
-const test2 = function () {
-  console.log(this); //undefined
+  showArticles() {
+    this.articles.forEach(function (currentArticle, index) {
+      console.log(this) // undefined
+      console.log(`${this.title} ${index + 1}: ${currentArticle}`);
+    });
+  },
 };
 
-const test3 = () => {
-  console.log(this); // уже не undefined
-};
-
-test();
-test2();
-test3();
+newsPaper.showArticles();
