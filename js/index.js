@@ -5,8 +5,9 @@ const newsPaper = {
   articles: ['String1', 'News1', 'Test1', 'Headiubng1'],
 
   showArticles() {
-    this.articles.forEach(function (currentArticle, index) {
-      console.log(this) // undefined
+    console.log(this);
+    this.articles.forEach( (currentArticle, index) => {
+      console.log(this); // newsPaper
       console.log(`${this.title} ${index + 1}: ${currentArticle}`);
     });
   },
