@@ -4,7 +4,8 @@ function test(a, b) {
   console.log(a, b);
 }
 
-function test2(a, b, ...args) { // ... - rest operator
+function test2(a, b, ...args) {
+  // ... - rest operator
   console.log(a, b);
   console.log(args);
 }
@@ -12,3 +13,12 @@ function test2(a, b, ...args) { // ... - rest operator
 Стрелочная функция суммирования 
 бесконечного кол-ва чисел 
 */
+const sum = (...args) => {
+  let res = null;
+
+  args.forEach((number) => {
+    res += number;
+  });
+
+  return res;
+};
