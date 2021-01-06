@@ -1,7 +1,8 @@
 'use strict';
-
-function getFullName() {
-  return `${this.firstName} ${this.lastName}`;
+function UserProto() {
+  this.getFullName = function getFullName() {
+    return `${this.firstName} ${this.lastName}`;
+  };
 }
 function User(firstName, lastName, email, age, isMale, isSubscribed = false) {
   this.firstName = firstName;
@@ -10,8 +11,8 @@ function User(firstName, lastName, email, age, isMale, isSubscribed = false) {
   this.age = age;
   this.isMale = isMale;
   this.isSubscribed = isSubscribed;
-  this.getFullName = getFullName;
 }
+User.prototype = new UserProto();
 function createRandomUsers(amount = 1) {
   const db = [];
 
