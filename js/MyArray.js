@@ -41,6 +41,7 @@ function MyArrayProto() {
     for (let i = 0; i < this.length; i++) {
       this[i] = copy.pop();
     }
+    return this
   };
 
   this.concat = function concat(myArrayInstance) {
@@ -95,6 +96,10 @@ function MyArray() {
     this.push(arguments[i]);
   }
 }
+
+MyArray.isMyArray = function (obj) {
+  return obj instanceof MyArray;
+};
 
 MyArray.prototype = new MyArrayProto(); // создаём связь между объектами(Наследование)
 
