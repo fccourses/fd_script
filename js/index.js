@@ -22,3 +22,13 @@ function toJadenCase(str) {
 }
 
 // 'test tes ttest' => 'Test Tes Ttest'
+
+/* 
+Посчитать кол-во гласных, которые содержаться в строке
+Из функции вернуть их кол-во 
+Гласными являются «a», «e», «i», «o», «u».
+*/
+function countVowels(string) {
+  const vowels = ['a', 'e', 'i', 'o', 'u'];
+  return string.split('').filter((char) => vowels.includes(char)).length;
+}
