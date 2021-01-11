@@ -24,6 +24,39 @@ function MyArrayProto() {
     }
   };
 
+  this.map = function map(cb) {
+    const result = new MyArray();
+    debugger;
+    for (let i = 0; i < this.length; i++) {
+      result.push(cb(this[i], i, this));
+    }
+    return result;
+  };
+
+  this.reverse = function reverse() {
+    const copy = new MyArray();
+    for (let i = 0; i < this.length; i++) {
+      copy.push(this[i]);
+    }
+    for (let i = 0; i < this.length; i++) {
+      this[i] = copy.pop();
+    }
+  };
+
+  this.concat = function concat(myArrayInstance) {
+    const result = new MyArray();
+
+    for (let i = 0; i < this.length; i++) {
+      result.push(this[i]);
+    }
+
+    for (let i = 0; i < myArrayInstance.length; i++) {
+      result.push(myArrayInstance[i]);
+    }
+
+    return result;
+  };
+
   this.some = function some(checkFunction) {
     for (let i = 0; i < this.length; i++) {
       if (checkFunction(this[i], i, this)) {
@@ -50,7 +83,7 @@ function MyArrayProto() {
         result.push(this[i]);
       }
     }
-    
+
     return result;
   };
 }
@@ -66,4 +99,4 @@ function MyArray() {
 MyArray.prototype = new MyArrayProto(); // создаём связь между объектами(Наследование)
 
 // this - ссылка на объект, который вызывает метод.
-const userArray = new MyArray({}, {});
+const userArray = new MyArray({ test: 1, test1: 2 }, { test: 1, test1: 2 });
