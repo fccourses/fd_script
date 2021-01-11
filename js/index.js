@@ -1,58 +1,24 @@
 'use strict';
 
-function countDown(startValue) {
-  console.log(startValue);
+function toUpperCase(str) {
+  let newStr = '';
 
-  if (startValue > 0) {
-    countDown(startValue - 1); // рекурсия
+  for (let i = 0; i < str.length; i++) {
+    newStr += str[i].toUpperCase();
   }
 
-  return true; // база
+  return newStr;
 }
 
-function power(num, exp) {
-  debugger;
-  if (exp === 1) {
-    return num;
-  }
-
-  return num * power(num, exp - 1);
+function toJadenCase(str) {
+  return str
+    .split(' ')
+    .map((word) => {
+      const letterArr = [...word];
+      letterArr[0] = letterArr[0].toUpperCase();
+      return letterArr.join('');
+    })
+    .join(' ');
 }
 
-/* Залогировать все числа от 1 до N */
-
-function logNum(n) {
-  if (n === 1) {
-    return 1; //basis
-  }
-  return `${logNum(n - 1)} ${n}`;
-}
-
-/* Факториал числа */
-
-function factorial(n) {
-  if (n === 1) {
-    return 1; // basis
-  }
-
-  return n * factorial(n - 1); //recursion
-}
-
-/*
-  parenthsis(5);
- '((((()))))' 
- */
-
-function par(n) {
-  if (n === 1) {
-    return '()';
-  }
-  return `(${par(n - 1)})`;
-}
-
-/*
-Этапы рекурсии:
-  1) Происходит рекурсивный вызов функций
-  2) Доходим до базы
-  3) Все в call stack заканчивают свою работу
-*/
+// 'test tes ttest' => 'Test Tes Ttest'
