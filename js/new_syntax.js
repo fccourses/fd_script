@@ -30,14 +30,32 @@ class Worker {
   }
 }
 
-/* Auto */
-/* Fuel */
-
 class Fuel {
+  /**
+   *
+   * @param {number} volume
+   * @param {number} density
+   */
   constructor(volume, density) {
     this.volume = volume;
-    this.density = density;
+    this._density = density; 
+    // underline - соглашение по именованию 
+    // закрытых переменных
   }
+
+  set volume(v) {
+    // setter
+    if (typeof v !== 'number') {
+      throw new TypeError('Data must be a numbers');
+    }
+    this._volume = v;
+  }
+
+  get volume() {
+    // getter
+    return this._volume;
+  }
+
   getFuelWeight() {
     return this.volume * this.density;
   }
@@ -59,33 +77,3 @@ class Auto {
     return this.ownWeight + this.fuel.getFuelWeight();
   }
 }
-
-const vw = new Auto('passat', 1350, new Fuel(40, 0.8));
-
-/* 
-Friend
-  name: string
-  appleAmount: number
-  friends: Friend[]
-
-  Посчитать кол-во яблок у двух друзей
-  Advanced: кол-во яблок у всех друзей
-*/
-
-class Friend {
-  constructor(name, appleAmount, friend) {
-    this.name = name;
-    this.appleAmount = appleAmount;
-    this.friend = friend;
-  }
-
-  countAllApples() {
-    return this.appleAmount + this.friend.appleAmount;
-  }
-}
-const viktor = new Friend('Viktor', 7);
-
-const vlad = new Friend('Vlad', 50000, viktor);
-
-const amountOfAllApples = vlad.countAllApples();
-console.log(amountOfAllApples);
