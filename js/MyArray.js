@@ -102,6 +102,3 @@ MyArray.isMyArray = function (obj) {
 };
 
 MyArray.prototype = new MyArrayProto(); // создаём связь между объектами(Наследование)
-
-// this - ссылка на объект, который вызывает метод.
-const userArray = new MyArray({ test: 1, test1: 2 }, { test: 1, test1: 2 });
