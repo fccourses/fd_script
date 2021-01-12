@@ -28,6 +28,12 @@ class User {
   }
 
   /* Сделать isAdult статичным методом */
+  static isAdult(obj){
+    if (obj instanceof User) {
+      return obj.isAdult
+    }
+    throw new TypeError('Parameter must be a User');
+  }
 
   static isUser(obj) {
     return obj instanceof User;
