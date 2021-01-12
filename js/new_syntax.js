@@ -8,12 +8,29 @@ class User {
     this.age = age;
   }
 
-  getFullName() {
+  get fullName() {
     return `${this.name} ${this.surName}`;
   }
 
-  isAdult() {
+  set fullName(newFullName) {
+    if (typeof newFullName !== 'string') {
+      throw new TypeError('Name must be a string');
+    }
+
+    const nameArray = newFullName.split(' ');
+
+    this.name = nameArray[0];
+    this.surName = nameArray[1];
+  }
+
+  get isAdult() {
     return this.age >= 18;
+  }
+
+  /* Сделать isAdult статичным методом */
+
+  static isUser(obj) {
+    return obj instanceof User;
   }
 }
 
@@ -38,9 +55,7 @@ class Fuel {
    */
   constructor(volume, density) {
     this.volume = volume;
-    this._density = density; 
-    // underline - соглашение по именованию 
-    // закрытых переменных
+    this.density = density;
   }
 
   set volume(v) {
@@ -56,7 +71,18 @@ class Fuel {
     return this._volume;
   }
 
-  getFuelWeight() {
+  set density(v) {
+    if (typeof v !== 'number') {
+      throw new TypeError('Data must be a numbers');
+    }
+    this._density = v;
+  }
+
+  get density() {
+    return this._density;
+  }
+
+  get weight() {
     return this.volume * this.density;
   }
 }
