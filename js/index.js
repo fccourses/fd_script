@@ -11,6 +11,18 @@ class Figure {
   getArea() {}
 }
 
+/* Circle: radius, getArea() */
+
+class Circle extends Figure {
+  constructor(radius) {
+    super('Circle');
+    this._radius = radius;
+  }
+  getArea() {
+    return Math.PI * this._radius * this._radius;
+  }
+}
+
 class Triangle extends Figure {
   constructor(a, b, angle) {
     super('Triangle');
@@ -35,7 +47,7 @@ class Square extends Figure {
 
 const t = new Triangle(5, 7, 45);
 const s = new Square(6);
-
+const c = new Circle(10);
 /**
  *
  * @param {Figure} figure
