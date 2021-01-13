@@ -1,59 +1,48 @@
-class Squirrel {
-  constructor(name, isMale) {
-    this.name = name;
-    this.isMale = isMale;
-  }
-
-  eat() {
-    return `${this.name} is eating`;
-  }
-
-  climb() {
-    return `${this.name} is climbing`;
-  }
-}
-
-const chip = new Squirrel('Chip', true);
-
-class FlyingSqurrel extends Squirrel {
-  constructor(name, isMale, distance) {
-    super(name, isMale);
-    this.distance = distance;
-  }
-  fly() {
-    return `${this.name} is flying`;
-  }
-}
-
-const tip = new FlyingSqurrel('Tip', true, 120);
-
 /* 
-  Сказочная белка
-  танцевать() - возвращает строку
-  петь() - все песни из репертуара белки
-
-  песни: string[] - репертуар белки
+1. Инкапсуляция + 
+2. Наследование + 
+3. Полиморфизм +
 */
 
-class FableSquirrel extends FlyingSqurrel {
-  constructor(name, isMale, distance, songs) {
-    super(name, isMale, distance);
-    this.songs = songs;
+class Figure {
+  constructor(name) {
+    this._name = name;
   }
+  getArea() {}
+}
 
-  dance() {
-    return `${this.name} is dancing`;
+class Triangle extends Figure {
+  constructor(a, b, angle) {
+    super('Triangle');
+    this._a = a;
+    this._b = b;
+    this._angle = angle;
   }
-
-  sing() {
-    return `Белка ${this.name} поет такие песни: ${this.songs.join(', ')}`;
-  }
-
-  climb() {} // убрали метод climb
-
-  eat() { // переопределили метод eat
-    return `Сказочная белки ест золотые орехи`;
+  getArea() {
+    return this._a * this._b * Math.sin(this._angle * (180 / Math.PI));
   }
 }
 
-const tail = new FableSquirrel('Tail', false, 600, ['song1', 'song2', 'song3']);
+class Square extends Figure {
+  constructor(a) {
+    super('Square');
+    this._a = a;
+  }
+  getArea() {
+    return this._a * this._a;
+  }
+}
+
+const t = new Triangle(5, 7, 45);
+const s = new Square(6);
+
+/**
+ *
+ * @param {Figure} figure
+ */
+function getFigureArea(figure) {
+  if (figure instanceof Figure) {
+    return figure.getArea(); // <- У любой фигуры будет вот такой интерфейс
+  }
+  throw new TypeError('Не поддерживаемый интерфейс');
+}
