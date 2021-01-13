@@ -1,47 +1,53 @@
-class User {
-  constructor(login, email, age, isBanned = false) {
-    this.login = login;
-    this.email = email;
-    this.age = age;
-    this._isBanned = isBanned;
+class Squirrel {
+  constructor(name, isMale) {
+    this.name = name;
+    this.isMale = isMale;
   }
 
-  set isBanned(v) {
-    this._isBanned = v;
+  eat() {
+    return `${this.name} is eating`;
   }
 
-  get isBanned() {
-    return this._isBanned;
-  }
-
-  getFullInfo() {
-    return `${this.login}:${this.email}`;
+  climb() {
+    return `${this.name} is climbing`;
   }
 }
 
-class Admin extends User {
-  constructor(email, age) {
-    super('AdminLogin', email, age, false);
+const chip = new Squirrel('Chip', true);
+
+class FlyingSqurrel extends Squirrel {
+  constructor(name, isMale, distance) {
+    super(name, isMale);
+    this.distance = distance;
   }
-  ban(user) {
-    if (user instanceof User) {
-      user.isBanned = true;
-      return;
-    }
-    throw new TypeError();
-  }
-  unBan(user) {
-    if (user instanceof User) {
-      user.isBanned = false;
-      return;
-    }
-    throw new TypeError();
-  }
-  toggleBan(user) {
-    if (user instanceof User) {
-      user.isBanned = !user.isBanned;
-      return;
-    }
-    throw new TypeError();
+  fly() {
+    return `${this.name} is flying`;
   }
 }
+
+const tip = new FlyingSqurrel('Tip', true, 120);
+
+/* 
+  Сказочная белка
+  танцевать() - возвращает строку
+  петь() - все песни из репертуара белки
+
+  песни: string[] - репертуар белки
+*/
+
+class FableSquirrel extends FlyingSqurrel {
+  constructor(name, isMale, distance, songs) {
+    super(name, isMale, distance);
+    this.songs = songs;
+  }
+
+  dance() {
+    return `${this.name} is dancing`;
+  }
+
+  sing() {
+    return `Белка ${this.name} поет такие песни: ${this.songs.join(', ')}`;
+  }
+}
+
+const tail = new FableSquirrel('Tail', false, 600, ['song1', 'song2', 'song3']);
