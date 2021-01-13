@@ -48,6 +48,12 @@ class FableSquirrel extends FlyingSqurrel {
   sing() {
     return `Белка ${this.name} поет такие песни: ${this.songs.join(', ')}`;
   }
+
+  climb() {} // убрали метод climb
+
+  eat() { // переопределили метод eat
+    return `Сказочная белки ест золотые орехи`;
+  }
 }
 
 const tail = new FableSquirrel('Tail', false, 600, ['song1', 'song2', 'song3']);
