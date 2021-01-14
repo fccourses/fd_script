@@ -1,114 +1,36 @@
-class MyArray {
-  constructor() {
-    this.length = 0;
-    for (let i = 0; i < arguments.length; i++) {
-      this.push(arguments[i]);
-    }
-  }
+/* 
+  1. number - NaN, Infinity, numbers[]
+  2. bool - true, false
+  3. string - '', 'a-zA-Z'
+  5. undefined - undefined
+  6. null - null
+  7. BigInt - 123n
 
-  push() {
-    for (let i = 0; i < arguments.length; i++) {
-      this[this.length] = arguments[i];
-      ++this.length;
-    }
-    return this.length;
-  }
+  4. symbol - уникальное значение
 
-  forEach(cb) {
-    for (let i = 0; i < this.length; i++) {
-      cb(this[i], i, this);
-    }
-  }
+  8. object - {*}
+*/
 
-  concat(myArrayInstance) {
-    const result = new MyArray();
+const mySymbol = Symbol('Symbol.Iterator');
 
-    for (let i = 0; i < this.length; i++) {
-      result.push(this[i]);
-    }
+const object = {
+  key: 'value',
+  key1: 'value2',
+  key2: 3,
+  [mySymbol]: 'value',
+};
 
-    for (let i = 0; i < myArrayInstance.length; i++) {
-      result.push(myArrayInstance[i]);
-    }
+const arr = [1, 2, 3, 4, 5];
+const myArr = new MyArray(1, 2, 3, 4, 5);
 
-    return result;
-  }
+console.log(...arr); // 1 iterator
+// console.log(...myArr)
 
-  flat(depth = 1) {
-    let result = new MyArray();
-
-    /*  
-   for (let i = 0; i < this.length; i++) {
-      if (MyArray.isMyArray(this[i]) && depth > 0) {
-        result = result.concat(this[i].flat(depth - 1));
-      } else if (this[i] !== undefined) {
-        result.push(this[i]);
-      }
-    } */
-
-    this.forEach((item) => {
-      if (MyArray.isMyArray(item) && depth > 0) {
-        result = result.concat(item.flat(depth - 1));
-      } else if (item !== undefined) {
-        result.push(item);
-      }
-    });
-
-    return result;
-  }
-
-  static isMyArray(obj) {
-    return obj instanceof MyArray;
-  }
+/*   2 iterator
+for (const item of myArr) {
+  console.log(item);
 }
+ */
 
-class Friend {
-  /**
-   *
-   * @param {number} count
-   * @param {Friend[]} friends
-   */
-  constructor(count = 0, friends = []) {
-    this.count = count;
-    this.friends = friends;
-  }
 
-  getCount() {
-    if (this.friends.length) {
-      return this.friends.reduce(
-        (result, friend) => result + friend.getCount(),
-        this.count
-      );
-    }
-    return this.count;
-  }
-}
-
-const friend = new Friend(10, [
-  new Friend(5),
-  new Friend(5, [
-    new Friend(5),
-    new Friend(5),
-    new Friend(5, [
-      new Friend(5),
-      new Friend(5),
-      new Friend(5),
-      new Friend(5),
-      new Friend(7),
-    ]),
-  ]),
-  new Friend(5, [
-    new Friend(5),
-    new Friend(5, [
-      new Friend(5),
-      new Friend(5),
-      new Friend(1),
-      new Friend(5),
-      new Friend(5),
-    ]),
-    new Friend(5),
-    new Friend(5),
-    new Friend(5),
-  ]),
-  new Friend(1000),
-]);
+ 
