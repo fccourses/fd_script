@@ -47,13 +47,11 @@ class MyArray {
     } */
 
     this.forEach((item) => {
-
       if (MyArray.isMyArray(item) && depth > 0) {
         result = result.concat(item.flat(depth - 1));
       } else if (item !== undefined) {
         result.push(item);
       }
-      
     });
 
     return result;
@@ -64,12 +62,53 @@ class MyArray {
   }
 }
 
-const myArr = new MyArray(
-  0,
-  0,
-  0,
-  0,
-  new MyArray(1, 1, 1, 1, 1, new MyArray(2, 2, 2, 2, 2))
-);
+class Friend {
+  /**
+   *
+   * @param {number} count
+   * @param {Friend[]} friends
+   */
+  constructor(count = 0, friends = []) {
+    this.count = count;
+    this.friends = friends;
+  }
 
-const arr = [0, 0, , , , , , , , , 0, [1, 1, 1, [2, 2, 2, [3, 3, 3, 3]]]];
+  getCount() {
+    if (this.friends.length) {
+      return this.friends.reduce(
+        (result, friend) => result + friend.getCount(),
+        this.count
+      );
+    }
+    return this.count;
+  }
+}
+
+const friend = new Friend(10, [
+  new Friend(5),
+  new Friend(5, [
+    new Friend(5),
+    new Friend(5),
+    new Friend(5, [
+      new Friend(5),
+      new Friend(5),
+      new Friend(5),
+      new Friend(5),
+      new Friend(7),
+    ]),
+  ]),
+  new Friend(5, [
+    new Friend(5),
+    new Friend(5, [
+      new Friend(5),
+      new Friend(5),
+      new Friend(1),
+      new Friend(5),
+      new Friend(5),
+    ]),
+    new Friend(5),
+    new Friend(5),
+    new Friend(5),
+  ]),
+  new Friend(1000),
+]);
