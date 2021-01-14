@@ -1,60 +1,75 @@
-/* 
-1. Инкапсуляция + 
-2. Наследование + 
-3. Полиморфизм +
-*/
-
-class Figure {
-  constructor(name) {
-    this._name = name;
+class MyArray {
+  constructor() {
+    this.length = 0;
+    for (let i = 0; i < arguments.length; i++) {
+      this.push(arguments[i]);
+    }
   }
-  getArea() {}
+
+  push() {
+    for (let i = 0; i < arguments.length; i++) {
+      this[this.length] = arguments[i];
+      ++this.length;
+    }
+    return this.length;
+  }
+
+  forEach(cb) {
+    for (let i = 0; i < this.length; i++) {
+      cb(this[i], i, this);
+    }
+  }
+
+  concat(myArrayInstance) {
+    const result = new MyArray();
+
+    for (let i = 0; i < this.length; i++) {
+      result.push(this[i]);
+    }
+
+    for (let i = 0; i < myArrayInstance.length; i++) {
+      result.push(myArrayInstance[i]);
+    }
+
+    return result;
+  }
+
+  flat(depth = 1) {
+    let result = new MyArray();
+
+    /*  
+   for (let i = 0; i < this.length; i++) {
+      if (MyArray.isMyArray(this[i]) && depth > 0) {
+        result = result.concat(this[i].flat(depth - 1));
+      } else if (this[i] !== undefined) {
+        result.push(this[i]);
+      }
+    } */
+
+    this.forEach((item) => {
+
+      if (MyArray.isMyArray(item) && depth > 0) {
+        result = result.concat(item.flat(depth - 1));
+      } else if (item !== undefined) {
+        result.push(item);
+      }
+      
+    });
+
+    return result;
+  }
+
+  static isMyArray(obj) {
+    return obj instanceof MyArray;
+  }
 }
 
-/* Circle: radius, getArea() */
+const myArr = new MyArray(
+  0,
+  0,
+  0,
+  0,
+  new MyArray(1, 1, 1, 1, 1, new MyArray(2, 2, 2, 2, 2))
+);
 
-class Circle extends Figure {
-  constructor(radius) {
-    super('Circle');
-    this._radius = radius;
-  }
-  getArea() {
-    return Math.PI * this._radius * this._radius;
-  }
-}
-
-class Triangle extends Figure {
-  constructor(a, b, angle) {
-    super('Triangle');
-    this._a = a;
-    this._b = b;
-    this._angle = angle;
-  }
-  getArea() {
-    return this._a * this._b * Math.sin(this._angle * (180 / Math.PI));
-  }
-}
-
-class Square extends Figure {
-  constructor(a) {
-    super('Square');
-    this._a = a;
-  }
-  getArea() {
-    return this._a * this._a;
-  }
-}
-
-const t = new Triangle(5, 7, 45);
-const s = new Square(6);
-const c = new Circle(10);
-/**
- *
- * @param {Figure} figure
- */
-function getFigureArea(figure) {
-  if (figure instanceof Figure) {
-    return figure.getArea(); // <- У любой фигуры будет вот такой интерфейс
-  }
-  throw new TypeError('Не поддерживаемый интерфейс');
-}
+const arr = [0, 0, , , , , , , , , 0, [1, 1, 1, [2, 2, 2, [3, 3, 3, 3]]]];
