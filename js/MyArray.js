@@ -1,3 +1,23 @@
+class MyArrayIterator {
+  /**
+   *
+   * @param {MyArray} myArray
+   */
+  constructor(myArray) {
+    if (!myArray instanceof MyArray) {
+      throw new TypeError();
+    }
+    this._currentValue = 0;
+    this._collection = myArray;
+  }
+  next() {
+    return {
+      value: this._collection[this._currentValue++],
+      done: this._currentValue > this._collection.length,
+    };
+  }
+}
+
 /* Создаём прототип для MyArray(тут будет храниться логика) */
 function MyArrayProto() {
   /* Уже создан пустой новый объект (this) */
@@ -89,17 +109,7 @@ function MyArrayProto() {
   };
 
   this[Symbol.iterator] = function () {
-    let i = 0;
-    const array = this;
-
-    return {
-      next() {
-        return {
-          value: array[i++],
-          done: i > array.length,
-        };
-      },
-    };
+    return new MyArrayIterator(this);
   };
 }
 
