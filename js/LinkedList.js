@@ -2,16 +2,14 @@ class LinkedListIterator {
   constructor(list) {
     this._list = list;
     this._currentItem = null;
-    this._currentIndex = 0;
   }
   next() {
     this._currentItem = this._currentItem
       ? this._currentItem.next
       : this._list.head;
-    ++this._currentIndex;
     return {
       value: this._currentItem ? this._currentItem.value : undefined,
-      done: this._currentIndex > this._list.length,
+      done: !this._currentItem,
     };
   }
 }
