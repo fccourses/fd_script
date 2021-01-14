@@ -87,6 +87,20 @@ function MyArrayProto() {
 
     return result;
   };
+
+  this[Symbol.iterator] = function () {
+    let i = 0;
+    const array = this;
+
+    return {
+      next() {
+        return {
+          value: array[i++],
+          done: i > array.length,
+        };
+      },
+    };
+  };
 }
 
 /* Создаем MyArray */
@@ -105,3 +119,11 @@ MyArray.isMyArray = function (obj) {
 };
 
 MyArray.prototype = new MyArrayProto(); // создаём связь между объектами(Наследование)
+
+const myArr2 = new MyArray(1, 2, 3, 4, 5, 'STRING');
+
+const nativeArr = [...myArr2];
+
+for (const item of myArr2) {
+  console.log(item);
+}
