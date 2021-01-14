@@ -18,10 +18,19 @@ class MyArrayIterator {
   }
 }
 
-/* Создаём прототип для MyArray(тут будет храниться логика) */
-function MyArrayProto() {
-  /* Уже создан пустой новый объект (this) */
-  this.push = function push() {
+class MyArray {
+  constructor(...args) {
+    this.length = 0;
+    for (const item of args) {
+      this.push(item);
+    }
+  }
+
+  static isMyArray = function (obj) {
+    return obj instanceof MyArray;
+  };
+
+  push = function push() {
     for (let i = 0; i < arguments.length; i++) {
       this[this.length] = arguments[i];
       ++this.length;
@@ -29,7 +38,7 @@ function MyArrayProto() {
     return this.length;
   };
 
-  this.pop = function pop() {
+  pop = function pop() {
     if (this.length <= 0) {
       return;
     }
@@ -38,13 +47,13 @@ function MyArrayProto() {
     return lastItem;
   };
 
-  this.forEach = function forEach(cb) {
+  forEach = function forEach(cb) {
     for (let i = 0; i < this.length; i++) {
       cb(this[i], i, this);
     }
   };
 
-  this.map = function map(cb) {
+  map = function map(cb) {
     const result = new MyArray();
     debugger;
     for (let i = 0; i < this.length; i++) {
@@ -53,7 +62,7 @@ function MyArrayProto() {
     return result;
   };
 
-  this.reverse = function reverse() {
+  reverse = function reverse() {
     const copy = new MyArray();
     for (let i = 0; i < this.length; i++) {
       copy.push(this[i]);
@@ -64,7 +73,7 @@ function MyArrayProto() {
     return this;
   };
 
-  this.concat = function concat(myArrayInstance) {
+  concat = function concat(myArrayInstance) {
     const result = new MyArray();
 
     for (let i = 0; i < this.length; i++) {
@@ -78,7 +87,7 @@ function MyArrayProto() {
     return result;
   };
 
-  this.some = function some(checkFunction) {
+  some = function some(checkFunction) {
     for (let i = 0; i < this.length; i++) {
       if (checkFunction(this[i], i, this)) {
         return true;
@@ -87,7 +96,7 @@ function MyArrayProto() {
     return false;
   };
 
-  this.every = function every(checkFunc) {
+  every = function every(checkFunc) {
     for (let i = 0; i < this.length; i++) {
       if (!checkFunc(this[i], i, this)) {
         return false;
@@ -96,7 +105,7 @@ function MyArrayProto() {
     return true;
   };
 
-  this.filter = function filter(checkFunc) {
+  filter = function filter(checkFunc) {
     const result = new MyArray();
 
     for (let i = 0; i < this.length; i++) {
@@ -108,30 +117,12 @@ function MyArrayProto() {
     return result;
   };
 
-  this[Symbol.iterator] = function () {
+  [Symbol.iterator] = function () {
     return new MyArrayIterator(this);
   };
 }
 
-/* Создаем MyArray */
-function MyArray(...args) {
-  this.length = 0;
-  /* for (let i = 0; i < arguments.length; i++) {
-    this.push(arguments[i]);
-  } */
-  for (const item of args) {
-    this.push(item);
-  }
-}
-
-MyArray.isMyArray = function (obj) {
-  return obj instanceof MyArray;
-};
-
-MyArray.prototype = new MyArrayProto(); // создаём связь между объектами(Наследование)
-
 const myArr2 = new MyArray(1, 2, 3, 4, 5, 'STRING');
-
 const nativeArr = [...myArr2];
 
 for (const item of myArr2) {
