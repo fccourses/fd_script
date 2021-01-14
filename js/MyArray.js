@@ -7,8 +7,8 @@ class MyArrayIterator {
     if (!myArray instanceof MyArray) {
       throw new TypeError();
     }
-    this._currentValue = 0;
     this._collection = myArray;
+    this._currentValue = 0;
   }
   next() {
     return {
