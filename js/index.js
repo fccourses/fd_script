@@ -32,5 +32,15 @@ for (const item of myArr) {
 }
  */
 
+function forOf(collection, cb) {
+  const iterator = collection[Symbol.iterator]();
+  while (true) {
+    const result = iterator.next();
 
- 
+    if (result.done) {
+      return;
+    }
+
+    cb(result.value);
+  }
+}
