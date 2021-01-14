@@ -41,7 +41,7 @@ function MyArrayProto() {
     for (let i = 0; i < this.length; i++) {
       this[i] = copy.pop();
     }
-    return this
+    return this;
   };
 
   this.concat = function concat(myArrayInstance) {
@@ -90,10 +90,13 @@ function MyArrayProto() {
 }
 
 /* Создаем MyArray */
-function MyArray() {
+function MyArray(...args) {
   this.length = 0;
-  for (let i = 0; i < arguments.length; i++) {
+  /* for (let i = 0; i < arguments.length; i++) {
     this.push(arguments[i]);
+  } */
+  for (const item of args) {
+    this.push(item);
   }
 }
 

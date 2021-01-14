@@ -27,9 +27,7 @@ console.log(...arr); // 1 iterator
 // console.log(...myArr)
 
 /*   2 iterator
-for (const item of myArr) {
-  console.log(item);
-}
+
  */
 
 function forOf(collection, cb) {
@@ -43,4 +41,21 @@ function forOf(collection, cb) {
 
     cb(result.value);
   }
+}
+
+const users = [
+  {
+    name: 'name surname',
+  },
+  {
+    name: 'name2 surname2',
+  },
+];
+
+function sum(number1, ...args) {
+  let a = number1;
+  for (const b of args) {
+    a += b;
+  }
+  return a;
 }
