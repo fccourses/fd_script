@@ -9,7 +9,7 @@ class Stack {
   }
 
   get isEmpty() {
-    return this[`_${this._size}`] === 0;
+    return this._size === 0;
   }
 
   get size() {
@@ -38,7 +38,7 @@ class Stack {
       return;
     }
 
-    return this[this._size - 1];
+    return this[`_${this._size - 1}`];
   }
 }
 
