@@ -1,63 +1,47 @@
-/* 
-  1. number - NaN, Infinity, numbers[]
-  2. bool - true, false
-  3. string - '', 'a-zA-Z'
-  5. undefined - undefined
-  6. null - null
-  7. BigInt - 123n
+const arr = [1123, 124, 12467, 3, 6, 8545, 8685, 34, 45646, 46, 34257, 4];
 
-  4. symbol - уникальное значение
+const sortedArr = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25];
 
-  8. object - {*}
-*/
+const binarySearch = (arr, value) => {
+  // O(logn) - логарифм
 
-const mySymbol = Symbol('Symbol.Iterator');
+  let start = 0;
+  let end = arr.length - 1;
+  let middle = Math.round(arr.length / 2);
 
-const object = {
-  key: 'value',
-  key1: 'value2',
-  key2: 3,
-  [mySymbol]: 'value',
+  while (true) {
+    if (value === arr[middle]) {
+      return middle;
+    }
+    if (value > arr[middle]) {
+      start = middle;
+      middle = Math.ceil((end + start) / 2);
+    } else {
+      end = middle;
+      middle = Math.floor((end - start) / 2);
+    }
+  }
 };
 
-const arr = [1, 2, 3, 4, 5];
-const myArr = new MyArray(1, 2, 3, 4, 5);
-
-console.log(...arr); // 1 iterator
-// console.log(...myArr)
-
-/*   2 iterator
-
- */
-
-function forOf(collection, cb) {
-  const iterator = collection[Symbol.iterator]();
-  while (true) {
-    const result = iterator.next();
-
-    if (result.done) {
-      return;
+const linearSearch = (arr, value) => {
+  // O(n) - linear
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === value) {
+      return i;
     }
-
-    cb(result.value);
   }
-}
 
-const users = [
-  {
-    name: 'name surname',
-  },
-  {
-    name: 'name2 surname2',
-  },
-];
+  return -1;
+};
 
-function sum(number1, ...args) {
-  let a = number1;
-  for (const b of args) {
-    a += b;
+const multuplyTable = (count) => {
+  // O(n^2) - квадратичная
+  const table = [];
+  for (let i = 1; i < count; i++) {
+    for (let j = 1; j < count; j++) {
+      table.push(`${i} * ${j} = ${i * j}`);
+    }
   }
-  return a;
-}
 
-
+  return table;
+};

@@ -61,6 +61,3 @@ class LinkedList {
     return new LinkedListIterator(this);
   }
 }
-
-const list = new LinkedList(1, 2, 3, 4, 5, 'test string');
-const arr = [...list];

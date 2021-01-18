@@ -121,10 +121,3 @@ class MyArray {
     return new MyArrayIterator(this);
   };
 }
-
-const myArr2 = new MyArray(1, 2, 3, 4, 5, 'STRING');
-const nativeArr = [...myArr2];
-
-for (const item of myArr2) {
-  console.log(item);
-}
