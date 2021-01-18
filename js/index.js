@@ -9,18 +9,21 @@ const binarySearch = (arr, value) => {
   let end = arr.length - 1;
   let middle = Math.round(arr.length / 2);
 
-  while (true) {
+  while (start <= end) {
+    middle = Math.floor((end + start) / 2);
+
     if (value === arr[middle]) {
       return middle;
     }
     if (value > arr[middle]) {
-      start = middle;
-      middle = Math.ceil((end + start) / 2);
+      start = middle + 1;
     } else {
-      end = middle;
-      middle = Math.floor((end - start) / 2);
+      end = middle - 1;
     }
   }
+
+  // TODO: Если элемент не найден: return -1
+  return -1;
 };
 
 const linearSearch = (arr, value) => {
