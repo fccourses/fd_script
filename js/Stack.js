@@ -43,3 +43,19 @@ class Stack {
 }
 
 const stack = new Stack();
+
+const checkSequence = (str) => {
+  const stack = new Stack();
+  for (const symbol of str) {
+    if (symbol === '(') {
+      stack.push(symbol);
+    }
+    if (stack.isEmpty) {
+      return false;
+    }
+    if (symbol === ')' && stack.pick() === '(') {
+      stack.pop();
+    }
+  }
+  return stack.isEmpty;
+};
