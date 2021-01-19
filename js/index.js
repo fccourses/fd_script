@@ -15,7 +15,8 @@ vocabulary.set('graph', 'граф');
 vocabulary.set('object', 'объект');
 vocabulary.set('table', 'стол');
 
-const userInput = 'cAt mOnkey dOg example trEe table algorithm graph object apple good';
+const userInput =
+  'cAt mOnkey dOg example trEe table algorithm graph object apple good';
 
 /* 
 String: split, toLowerCase
@@ -23,18 +24,16 @@ Array: join, map
 Map: get, has
 */
 
-const translate = (str) => {
-
-  const lowerStr = str.toLowerCase();
-  const wordsArray = lowerStr.split(' ');
-
-  const russianWordsArray = wordsArray.map((word) => {
-    if(vocabulary.has(word)){
-      const translatedWord = vocabulary.get(word);
-      return translatedWord;
-    }
-    return word
-  })
-  const russianStr = russianWordsArray.join(' ');
-  return russianStr;
+/**
+ *
+ * @param {string} str
+ * @param {string|RegExp} separator
+ * @return {string}
+ */
+const translate = (str, separator = ' ') => {
+  return str
+    .toLowerCase()
+    .split(separator)
+    .map((word) => (vocabulary.has(word) ? vocabulary.get(word) : word))
+    .join(separator);
 };
