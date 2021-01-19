@@ -69,11 +69,7 @@ const checkSequence = (str, options) => {
       return false;
     }
 
-    const lastInStack = stack.pick(); // знаем скобку сверху
-    const correctCloseBraces = braces[lastInStack]; // получаем закрывающую того же типа,
-    //что и последняя открываающая в стеке
-
-    if(correctCloseBraces === symbol){
+    if (braces[stack.pick()] === symbol) {
       stack.pop();
     }
   }
