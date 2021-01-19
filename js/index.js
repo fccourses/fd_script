@@ -12,7 +12,9 @@ myMap.set('1', true);
 console.log(myMap.get(1));
 console.log(myMap.get('1'));
 
+myMap.set(1, { newProp: 'test' });
+myMap.set(object, function () {});
 
-myMap.set(1,{newProp:'test'});
-myMap.set(object,function(){})
-
+console.log(myMap.has(1));
+console.log(myMap.has('1'));
+console.log(myMap.has('test'));
