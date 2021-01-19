@@ -44,16 +44,36 @@ class Stack {
 
 const stack = new Stack();
 
-const checkSequence = (str) => {
+const options = {
+  braces: {
+    '(': ')',
+    '[': ']',
+    '{': '}',
+  },
+  isStrict: false,
+};
+
+const checkSequence = (str, options) => {
   const stack = new Stack();
+  const braces = options.braces;
+
+  const closeBracesArray = Object.values(braces);
+
   for (const symbol of str) {
-    if (symbol === '(') {
+    if (braces[symbol]) {
       stack.push(symbol);
+      continue;
     }
-    if (stack.isEmpty) {
+
+    if (stack.isEmpty && closeBracesArray.includes(symbol)) {
       return false;
     }
-    if (symbol === ')' && stack.pick() === '(') {
+
+    const lastInStack = stack.pick(); // знаем скобку сверху
+    const correctCloseBraces = braces[lastInStack]; // получаем закрывающую того же типа,
+    //что и последняя открываающая в стеке
+
+    if(correctCloseBraces === symbol){
       stack.pop();
     }
   }
