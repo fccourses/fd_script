@@ -3,7 +3,7 @@ class Queue {
     this._head = 0;
     this._tail = 0;
 
-    for( const item of args){
+    for (const item of args) {
       this.push(item);
     }
   }
@@ -17,10 +17,12 @@ class Queue {
   }
 
   pop() {
-    const lastItem = this[this._head];
-    delete this[this._head++];
+    if (this.size) {
+      const lastItem = this[this._head];
+      delete this[this._head++];
 
-    return lastItem;
+      return lastItem;
+    }
   }
 }
 
@@ -32,3 +34,21 @@ mergeQueues(q1, q2){}
 Из двух очередей сделать одну. 
 Но в результирующей очереди элементы должны чередоваться.
 */
+
+const mergeQueues = (q1, q2) => {
+  const result = new Queue();
+
+  while (q1.size || q2.size) {
+    if (q1.size) {
+      const buffer = q1.pop();
+      result.push(buffer);
+    }
+
+    if (q2.size) {
+      const buffer = q2.pop();
+      result.push(buffer);
+    }
+  }
+
+  return result;
+};
