@@ -1,7 +1,11 @@
 class Queue {
-  constructor() {
+  constructor(...args) {
     this._head = 0;
     this._tail = 0;
+
+    for( const item of args){
+      this.push(item);
+    }
   }
   get size() {
     return this._tail - this._head;
@@ -20,4 +24,11 @@ class Queue {
   }
 }
 
-const q = new Queue();
+const q1 = new Queue(1, 3, 5);
+const q2 = new Queue(2, 4, 6);
+
+/* 
+mergeQueues(q1, q2){}
+Из двух очередей сделать одну. 
+Но в результирующей очереди элементы должны чередоваться.
+*/
