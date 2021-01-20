@@ -32,11 +32,6 @@ const rusWords = [...vocabulary.values()];
 const engWords = [...vocabulary.keys()];
 //=============================
 
-compare('test','sett') // true
-compare('love','evol') // true
-compare('test','lore') // false
-compare('Mom','Omo') // false
-
 /* 
   Напишите функцию, которая проверяет,
  может ли строка быть воссоздана с
@@ -47,6 +42,55 @@ compare('Mom','Omo') // false
 
  Функция возвращает Boolean.
 */
+/* 
+1. Создаёте словарь: 
+    буква -ключ,
+    кол-во этих букв в строке - значение.
+2. Таких словарей 2.
+3. Сравнить размер словарей.
+4. Сравнить содержание этих словарей.
+        get
+*/
+
+const compare = (str1, str2) => {
+  const mapToStr1 = new Map();
+  const mapToStr2 = new Map();
+
+  for (const letter of str1) {
+    if (mapToStr1.has(letter)) {
+      const value = mapToStr1.get(letter);
+      mapToStr1.set(letter, value + 1);
+      continue; // переходим на след. итерацию
+    }
+    mapToStr1.set(letter, 1);
+  }
+
+  for (const letter of str2) {
+    if (mapToStr2.has(letter)) {
+      // проверяем встречалась ли уже буква
+      const value = mapToStr2.get(letter);
+      mapToStr2.set(letter, value + 1); // буква встретилась ещё один раз
+      continue; // переходим на след. итерацию
+    }
+    mapToStr2.set(letter, 1); // буква встретилась впервые
+  }
+
+  if (mapToStr1.size !== mapToStr2.size) {
+    return false;
+  }
+
+  for (const letter of mapToStr1.keys()) {
+    if (mapToStr1.get(letter) !== mapToStr2.get(letter)) {
+      return false;
+    }
+  }
+  return true;
+};
+
+compare('test', 'sett'); // true
+/* compare('love', 'evol'); // true
+compare('test', 'lore'); // false
+compare('Mom', 'Omo'); // false */
 
 const userInput =
   'cAt mOnkey dOg example trEe table algorithm graph object apple good';
