@@ -14,17 +14,18 @@ vocabulary.set('tree', 'дерево');
 vocabulary.set('graph', 'граф');
 vocabulary.set('object', 'объект');
 vocabulary.set('table', 'стол');
-
+//=============================
 const keysArray = [];
-for (const item of vocabulary.keys()) {
-  keysArray.push(item);
+for (const key of vocabulary.keys()) {
+  keysArray.push(key);
 }
 console.log(keysArray);
-
-
-
-
-
+//======
+const valuesArray = [];
+for (const value of vocabulary.values()) {
+  valuesArray.push(value);
+}
+console.log(valuesArray);
 //=============================
 
 const userInput =
