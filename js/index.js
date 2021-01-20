@@ -37,3 +37,32 @@ const translate = (str, separator = ' ') => {
     .map((word) => (vocabulary.has(word) ? vocabulary.get(word) : word))
     .join(separator);
 };
+
+const user1 = {
+  id: 1,
+  name: 'John1',
+  surName: 'John1',
+  age: 18,
+};
+
+const user2 = {
+  id: 2,
+  name: 'Jane',
+  surName: 'John2',
+  age: 36,
+};
+
+const johnMsg = ['str1', 'str2', 'str3'];
+const janeMsg = ['1111', 'hello', 'test'];
+
+const mapWithAllMessages = new Map();
+
+mapWithAllMessages.set(user1.id, johnMsg);
+mapWithAllMessages.set(user2.id, janeMsg);
+
+const userToMsgs = (userId) => mapWithAllMessages.get(userId);
+
+/*
+ 1. getMsgFromMap(user) 
+ 2. getMsgFromMap(userId) 
+*/
