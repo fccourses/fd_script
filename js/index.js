@@ -20,13 +20,13 @@ const keysArray = [];
 for (const key of vocabulary.keys()) {
   keysArray.push(key);
 }
-console.log(keysArray);
+// console.log(keysArray);
 //======
 const valuesArray = [];
 for (const value of vocabulary.values()) {
   valuesArray.push(value);
 }
-console.log(valuesArray);
+// console.log(valuesArray);
 //=============================
 const rusWords = [...vocabulary.values()];
 const engWords = [...vocabulary.keys()];
@@ -83,7 +83,7 @@ const compareStrings = (str1, str2) => {
   return true;
 };
 
-compare('test', 'sett'); // true
+// compare('test', 'sett'); // true
 /* compare('love', 'evol'); // true
 compare('test', 'lore'); // false
 compare('Mom', 'Omo'); // false */
