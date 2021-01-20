@@ -18,12 +18,6 @@ vocabulary.set('table', 'стол');
 const userInput =
   'cAt mOnkey dOg example trEe table algorithm graph object apple good';
 
-/* 
-String: split, toLowerCase
-Array: join, map
-Map: get, has
-*/
-
 /**
  *
  * @param {string} str
@@ -56,7 +50,6 @@ const johnMsg = ['str1', 'str2', 'str3'];
 const janeMsg = ['1111', 'hello', 'test'];
 
 const mapWithAllMessages = new Map();
-
 mapWithAllMessages.set(user1.id, johnMsg);
 mapWithAllMessages.set(user2.id, janeMsg);
 

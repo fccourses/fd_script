@@ -42,8 +42,6 @@ class Stack {
   }
 }
 
-const stack = new Stack();
-
 const options = {
   braces: {
     '(': ')',
@@ -75,3 +73,5 @@ const checkSequence = (str, options) => {
   }
   return stack.isEmpty;
 };
+
+checkSequence('()', options);
