@@ -52,29 +52,25 @@ const engWords = [...vocabulary.keys()];
         get
 */
 
-const compare = (str1, str2) => {
-  const mapToStr1 = new Map();
-  const mapToStr2 = new Map();
-
-  for (const letter of str1) {
-    if (mapToStr1.has(letter)) {
-      const value = mapToStr1.get(letter);
-      mapToStr1.set(letter, value + 1);
+const createVocabulary = (str) => {
+  const vocabulary = new Map();
+  debugger
+  for (const letter of str) {
+    if (vocabulary.has(letter)) {
+      const value = vocabulary.get(letter);
+      vocabulary.set(letter, value + 1);
       continue; // переходим на след. итерацию
     }
-    mapToStr1.set(letter, 1);
+    vocabulary.set(letter, 1);
   }
 
-  for (const letter of str2) {
-    if (mapToStr2.has(letter)) {
-      // проверяем встречалась ли уже буква
-      const value = mapToStr2.get(letter);
-      mapToStr2.set(letter, value + 1); // буква встретилась ещё один раз
-      continue; // переходим на след. итерацию
-    }
-    mapToStr2.set(letter, 1); // буква встретилась впервые
-  }
+  return vocabulary;
+};
 
+const compareStrings = (str1, str2) => {
+  const mapToStr1 = createVocabulary(str1);
+  const mapToStr2 = createVocabulary(str2);
+  debugger;
   if (mapToStr1.size !== mapToStr2.size) {
     return false;
   }
