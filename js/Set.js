@@ -17,10 +17,13 @@ const nums2 = [1, 2, 3, 2345, 756, 34, 4532, 43, 12, 13243, 43, 243];
 const unique = [...new Set([...nums1, ...nums2])]; // уникальные значения из двух массивов
 
 /* 
+
 for(const item of vocabulary.values()){
   console.log(item);
 } 
 
 for(const item of vocabulary){
   console.log(item); // ['key', 'value']
-} */
+}
+
+*/

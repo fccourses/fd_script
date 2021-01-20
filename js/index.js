@@ -1,134 +1,45 @@
 'use strict';
 
-const vocabulary = new Map(); // Ассоциативный массив
-vocabulary.set('cat', 'кот');
-vocabulary.set('dog', 'собака');
-vocabulary.set('search', 'поиск');
-vocabulary.set('monkey', 'обезьяна');
-vocabulary.set('good', 'хорошо');
-vocabulary.set('bad', 'плохо');
-vocabulary.set('apple', 'яблоко');
-vocabulary.set('structure', 'структура');
-vocabulary.set('algorithm', 'алгоритм');
-vocabulary.set('tree', 'дерево');
-vocabulary.set('graph', 'граф');
-vocabulary.set('object', 'объект');
-vocabulary.set('table', 'стол');
+// Деструктуризация - особый синтаксис создания переменных
+// Деструктуризация объектов:
+const auto = {
+  color: 'red',
+  model: 'toyota',
+  year: 2010,
+  countDoor: 4,
+  engine: {
+    volume: { value: 2 },
+    type: 'ICE',
+  },
+};
+// const autoColor = auto.color;
+const {
+  engine: {
+    volume: { value },
+  },
+} = auto;
 
-//=============================
-const keysArray = [];
-for (const key of vocabulary.keys()) {
-  keysArray.push(key);
+console.log(value);
+
+const { model, year, ...restOfAuto } = auto;
+
+// Деструктуризация массива:
+
+const nums = [10, 20, 30, 4, 5];
+const [firstNumber, , thirdNumber, , fifthNumber] = nums;
+const [, sec, ...restOfNums] = nums;
+
+// Деструктуризация входных параметров
+
+function getAutoModel({ model, ...restOfCar }) {
+  console.log(restOfCar);
+  return model;
 }
-// console.log(keysArray);
-//======
-const valuesArray = [];
-for (const value of vocabulary.values()) {
-  valuesArray.push(value);
+
+function getFullName(user) {
+  return `${user.firstName} ${user.lastName}`;
 }
-// console.log(valuesArray);
-//=============================
-const rusWords = [...vocabulary.values()];
-const engWords = [...vocabulary.keys()];
-//=============================
 
-/* 
-  Напишите функцию, которая проверяет,
- может ли строка быть воссоздана с
- использованием символов другой строки.
-
- Первый параметр функции - создаваемая строка.
- Второй параметр - используемая строка.
-
- Функция возвращает Boolean.
-*/
-/* 
-1. Создаёте словарь: 
-    буква -ключ,
-    кол-во этих букв в строке - значение.
-2. Таких словарей 2.
-3. Сравнить размер словарей.
-4. Сравнить содержание этих словарей.
-        get
-*/
-
-const createVocabulary = (str) => {
-  const vocabulary = new Map();
-  debugger
-  for (const letter of str) {
-    if (vocabulary.has(letter)) {
-      const value = vocabulary.get(letter);
-      vocabulary.set(letter, value + 1);
-      continue; // переходим на след. итерацию
-    }
-    vocabulary.set(letter, 1);
-  }
-
-  return vocabulary;
-};
-
-const compareStrings = (str1, str2) => {
-  const mapToStr1 = createVocabulary(str1);
-  const mapToStr2 = createVocabulary(str2);
-  debugger;
-  if (mapToStr1.size !== mapToStr2.size) {
-    return false;
-  }
-
-  for (const letter of mapToStr1.keys()) {
-    if (mapToStr1.get(letter) !== mapToStr2.get(letter)) {
-      return false;
-    }
-  }
-  return true;
-};
-
-// compare('test', 'sett'); // true
-/* compare('love', 'evol'); // true
-compare('test', 'lore'); // false
-compare('Mom', 'Omo'); // false */
-
-const userInput =
-  'cAt mOnkey dOg example trEe table algorithm graph object apple good';
-
-/**
- *
- * @param {string} str
- * @param {string|RegExp} separator
- * @return {string}
- */
-const translate = (str, separator = ' ') => {
-  return str
-    .toLowerCase()
-    .split(separator)
-    .map((word) => (vocabulary.has(word) ? vocabulary.get(word) : word))
-    .join(separator);
-};
-
-const user1 = {
-  id: 1,
-  name: 'John1',
-  surName: 'John1',
-  age: 18,
-};
-
-const user2 = {
-  id: 2,
-  name: 'Jane',
-  surName: 'John2',
-  age: 36,
-};
-
-const johnMsg = ['str1', 'str2', 'str3'];
-const janeMsg = ['1111', 'hello', 'test'];
-
-const mapWithAllMessages = new Map();
-mapWithAllMessages.set(user1.id, johnMsg);
-mapWithAllMessages.set(user2.id, janeMsg);
-
-const userToMsgs = (userId) => mapWithAllMessages.get(userId);
-
-/*
- 1. getMsgFromMap(user) 
- 2. getMsgFromMap(userId) 
-*/
+function getFullName2({ firstName, lastName }) {
+  return `${firstName} ${lastName}`;
+}

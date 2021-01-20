@@ -51,10 +51,8 @@ const options = {
   isStrict: false,
 };
 
-const checkSequence = (str, options) => {
+const checkSequence = (str, { braces, ...options }) => {
   const stack = new Stack();
-  const braces = options.braces;
-
   const closeBracesArray = Object.values(braces);
 
   for (const symbol of str) {
