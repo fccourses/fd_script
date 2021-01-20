@@ -15,6 +15,18 @@ vocabulary.set('graph', 'граф');
 vocabulary.set('object', 'объект');
 vocabulary.set('table', 'стол');
 
+const keysArray = [];
+for (const item of vocabulary.keys()) {
+  keysArray.push(item);
+}
+console.log(keysArray);
+
+
+
+
+
+//=============================
+
 const userInput =
   'cAt mOnkey dOg example trEe table algorithm graph object apple good';
 
