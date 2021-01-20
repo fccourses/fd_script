@@ -28,6 +28,12 @@ for (const value of vocabulary.values()) {
 console.log(valuesArray);
 //=============================
 
+const rusWords = [...vocabulary.values()];
+const engWords = [...vocabulary.keys()];
+
+//=============================
+
+
 const userInput =
   'cAt mOnkey dOg example trEe table algorithm graph object apple good';
 
